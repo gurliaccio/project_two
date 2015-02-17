@@ -1,15 +1,19 @@
 <% provide(:title, @user.name) %>
 
-<h1><%= @user.name %></h1>
+<h3>welcome <%= @user.name %>!</h3>
+<h5>please enter your info below</h5>
 
-<h5>Items Added</h5>
-<ul>
-  <% @user.items.each do |item| %>
-    <li>
-      <%= link_to item.name, item_path(item) %>
-      <% if current_user?(@user) %>
-         | <%= link_to "edit", edit_item_path(item) %>
-      <% end %>
-     </li>
-  <% end %>
-</ul>
+<div class="entry">
+  <form class="navbar-form" role="search" action="/checkups">
+    <div class="radio">
+      <label><input type="radio" name="gender" value="male">male</label>
+    </div>
+    <div class="radio">
+      <label><input type="radio" name="gender" value="female">female</label>
+    </div>
+    <div class="form-group"><input type="integer" name="age" value="<%= @age %>" class="form-control" placeholder="age">
+      <button type="submit" class="btn btn-success hvr-grow" onclick="window.location.href='/index'">submit</button>
+      <button type="reset"  class="btn btn-warning hvr-grow" onclick="window.location.href='/'">reset</button>
+    </div>
+  </form>
+</div>  

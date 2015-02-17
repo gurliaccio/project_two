@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   before_save { email.downcase! }
 
-  has_many :items
+  #has_many :items
 
   # Similar to has_many :items
   # def items
@@ -20,5 +20,9 @@ class User < ActiveRecord::Base
 
   def self.digest(token)
     Digest::SHA1.hexdigest(token.to_s)
+  end
+
+  def to_s
+    "#{name} : #{email}"
   end
 end

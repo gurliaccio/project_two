@@ -1,9 +1,10 @@
 <section class="container">
 
-  <!-- Main component for a primary marketing message or call to action -->
+  <h3>You are logged in as <%= current_user %></h3>
+
   <div class="jumbotron">
-    <h2>Welcome to the <img width=76 height=76 src="/images/ga.png"/> Camping Store</h2>
-    <h4>We are just getting started but please check us out.</h4>
+    <h1>welcome to miHealth   <img width=90 height=90 src="/images/logo.png"/></h1>
+    <h4>your resource for personalized health care suggestions and reminders</h4>
   </div>
 
   <!-- Static navbar -->
@@ -24,20 +25,20 @@
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-          <li <%= 'class="active"' if @active == 'home'  %>><a href="/">Home</a></li>
-          <li <%= 'class="active"' if @active == 'items' %>><a href="/items">Shop</a></li>
-          <li <%= 'class="active"' if @active == 'about' %>><a href="/about">About</a></li>
+          <li <%= 'class="active"' if @active == 'home'  %>><a href="/">home</a></li>
+          <!-- <li <%= 'class="active"' if @active == 'items' %>><a href="/items">Shop</a></li> -->
+          <li <%= 'class="active"' if @active == 'about' %>><a href="/about">about</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to "Items", items_path %></li>
-          <li><%= link_to "New Item", new_item_path %></li>
+          <!-- <li><%#= link_to "Items", items_path %></li>
+          <li><%#= link_to "New Item", new_item_path %></li> -->
           <% if signed_in? %>
-            <li><%= link_to "My Profile", user_path(current_user) %></li>
-            <li><%= link_to "Edit Profile", edit_user_path(current_user) %></li>
-            <li><%= link_to "Sign Out", signout_path, method: 'delete' %></li>
+            <li><%= link_to "my profile", user_path(current_user) %></li>
+            <li><%= link_to "edit profile", edit_user_path(current_user) %></li>
+            <li><%= link_to "sign out", signout_path, method: 'delete' %></li>
           <% else %>
-            <li><%= link_to "Sign Up", signup_path %></li>
-            <li><%= link_to "Sign In", signin_path %></li>
+            <li><%= link_to "sign up", signup_path %></li>
+            <li><%= link_to "sign in", signin_path %></li>
           <% end %>
         </ul>
       </div><!--/.nav-collapse -->

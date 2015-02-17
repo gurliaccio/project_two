@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       sign_in @user
-      flash[:success] = "Bienvenido!!"
+      flash[:success] = "Success!"
       # redirect_to user_path(@user.id)
       # This is the same thing as:
       redirect_to user_path @user # more likely to see this in professional world

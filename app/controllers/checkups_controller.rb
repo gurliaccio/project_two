@@ -1,15 +1,18 @@
-class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
+class CheckupsController < ApplicationController
+  #before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :signed_in_user, except: [:index, :show]
   before_action :correct_user,   except: [:new, :create, :index, :show]
 
   def index
-    @active = 'items'
-    @items  = Item.all
+    @gender = params[:gender]
+    @age = params[:age]
+    @checkups = Checkup.search(@gender, @age)
+    puts "Checkups: #{@checkups}"
   end
 
   def show
     @active = 'items'
+    @item = Item.find(params[:id].to_i)
   end
 
   def new
@@ -19,9 +22,9 @@ class ItemsController < ApplicationController
 
   def create
     @active = 'items'
-    # @item = Item.new(item_params)
-    @item = current_user.items.new(item_params) # automagically sets user_id: current_user.id
-    # if @item is valid, it returns a truthy value
+    @item = Item.new(item_params)
+    @item = current_user.items.new(item_params) 
+    
     if @item.save
       flash[:success] = "Item created."
       redirect_to items_path
